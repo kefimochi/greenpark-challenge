@@ -1,0 +1,43 @@
+.sections-main {
+  background: white;
+  display: flex;
+  height: auto;
+  width: 100%;
+  padding: 2em 10em 2em 10em;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.main-item {
+  list-style-type: none;
+  background: white;
+  margin: 1.5em;
+  padding: 0.5em 0.9em 1em 0.9em;
+  height: 100%;
+  box-shadow: 0 30px 40px -15px rgba(0, 0, 0, 0.15);
+  width: 15em;
+  height: 19em;
+  border-radius: 0.5em;
+  img {
+    border-radius: 0.5em;
+    height: 15em;
+    width: 15em;
+  }
+  h3 {
+    color: black;
+    font-size: 1.5em;
+    font-family: 'Zrnic';
+    text-align: center;
+  }
+  &:hover {
+    h3 {
+      color: red;
+    }
+  }
+}
