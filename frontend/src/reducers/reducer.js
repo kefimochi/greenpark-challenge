@@ -5,7 +5,7 @@ import {
 } from '../actions/actions';
 
 const initialState = {
-  users: {},
+  users: [],
   pageNumber: 0,
   error: '',
   isFetching: false
@@ -23,7 +23,7 @@ function reducer(state = initialState, action) {
     case USERS_FETCH_SUCCESS:
       return {
         ...state,
-        users: { ...action.payload },
+        users: [...action.payload],
         pageNumber: action.pageNumber,
         isFetching: false,
         error: ''
