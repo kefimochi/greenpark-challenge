@@ -7,30 +7,31 @@ import '../styles/main.scss';
 
 const List = props => {
   return (
-    <div className="sections-main">
-      {(window.onload = () => props.getPaginatedUsers(0))}
-      <h2>Hi</h2>
-      <button onClick={() => props.getPaginatedUsers(20)}></button>
-      {console.log(props.users)}
+    <div>
       <PageButtons />
-      {props.users && props.users.length > 0 ? (
-        props.users.map(user => {
-          return (
-            <Link className="main-item" to={`/users`} key={user.id}>
-              <img
-                src={user.profile_pic}
-                alt={`Profile picture of ${user.first} ${user.last}`}
-              ></img>
+      <div className="sections-main">
+        {(window.onload = () => props.getPaginatedUsers(0))}
+        {console.log(props.users)}
 
-              <h3>
-                {user.first} {user.last}
-              </h3>
-            </Link>
-          );
-        })
-      ) : (
-        <p>Loading...</p>
-      )}
+        {props.users && props.users.length > 0 ? (
+          props.users.map(user => {
+            return (
+              <Link className="main-item" to={`/users`} key={user.id}>
+                <img
+                  src={user.profile_pic}
+                  alt={`Profile picture of ${user.first} ${user.last}`}
+                ></img>
+
+                <h3>
+                  {user.first} {user.last}
+                </h3>
+              </Link>
+            );
+          })
+        ) : (
+          <p>Loading...</p>
+        )}
+      </div>
     </div>
   );
 };
