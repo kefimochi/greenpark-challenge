@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { getPaginatedUsers } from '../actions/actions';
 import PageButtons from './pagebuttons';
 import '../styles/main.scss';
@@ -14,17 +15,17 @@ const List = props => {
       <PageButtons />
       {props.users && props.users.length > 0 ? (
         props.users.map(user => {
-          console.log('got here');
           return (
-            <div className="main-item">
+            <Link className="main-item" to={`/users`} key={user.id}>
               <img
                 src={user.profile_pic}
                 alt={`Profile picture of ${user.first} ${user.last}`}
               ></img>
+
               <h3>
                 {user.first} {user.last}
               </h3>
-            </div>
+            </Link>
           );
         })
       ) : (
