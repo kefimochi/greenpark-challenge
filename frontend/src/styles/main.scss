@@ -47,6 +47,10 @@
 }
 
 .pages-container {
-  // display: flex;
-  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  p {
+    margin-right: 3em;
+  }
 }
