@@ -4,7 +4,10 @@ import {
   USERS_FETCH_FAIL,
   USERS_LONG_FETCH_FAIL,
   USERS_LONG_FETCH_START,
-  USERS_LONG_FETCH_SUCCESS
+  USERS_LONG_FETCH_SUCCESS,
+  USERS_POST_FAIL,
+  USERS_POST_START,
+  USERS_POST_SUCCESS
 } from '../actions/actions';
 
 const initialState = {
@@ -17,7 +20,6 @@ const initialState = {
 };
 
 function reducer(state = initialState, action) {
-  console.log('State', state);
   switch (action.type) {
     case USERS_FETCH_START:
       return {
@@ -53,6 +55,24 @@ function reducer(state = initialState, action) {
         error: ''
       };
     case USERS_LONG_FETCH_FAIL:
+      return {
+        ...state,
+        error: action.payload
+      };
+
+    case USERS_POST_START:
+      return {
+        ...state,
+        isFetching: true,
+        error: ''
+      };
+    case USERS_POST_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        error: ''
+      };
+    case USERS_POST_FAIL:
       return {
         ...state,
         error: action.payload

@@ -8,6 +8,10 @@ export const USERS_LONG_FETCH_START = 'LENGTH_FETCH_START';
 export const USERS_LONG_FETCH_SUCCESS = 'LENGTH_FETCH_SUCCESS';
 export const USERS_LONG_FETCH_FAIL = 'LENGTH_FETCH_FAIL';
 
+export const USERS_POST_START = 'LENGTH_POST_START';
+export const USERS_POST_SUCCESS = 'LENGTH_POST_SUCCESS';
+export const USERS_POST_FAIL = 'LENGTH_POST_FAIL';
+
 export const getPaginatedUsers = skip => dispatch => {
   dispatch({ type: USERS_FETCH_START });
   axios
@@ -40,4 +44,17 @@ export const getAllUsers = () => dispatch => {
       });
     })
     .catch(err => dispatch({ type: USERS_LONG_FETCH_FAIL, payload: err }));
+};
+
+export const editUser = (user, id) => dispatch => {
+  dispatch({ type: USERS_POST_START });
+  axios
+    .post(`http://localhost:8080/api/users/${id}`, user)
+    .then(res => {
+      dispatch({
+        type: USERS_POST_SUCCESS,
+        payload: res.data
+      });
+    })
+    .catch(err => dispatch({ type: USERS_POST_FAIL, payload: err }));
 };

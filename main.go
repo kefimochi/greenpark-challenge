@@ -42,8 +42,13 @@ func main() {
 	_ = s.Shutdown(context.Background())
 }
 
+func enableCors(w *http.ResponseWriter) {
+	(*w).Header().Set("Access-Control-Allow-Origin", "*")
+}
+
 func wrapper(f func(http.ResponseWriter, *http.Request)) func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
+		enableCors(&w)
 		f(w, r)
 
 		var query string

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import PageButtons from './pagebuttons';
 import { Link } from 'react-router-dom';
 import { getAllUsers } from '../actions/actions';
 import '../styles/main.scss';
@@ -13,7 +12,6 @@ const Profile = props => {
 
   return (
     <div>
-      <PageButtons />
       <div className="sections-profile">
         {/* Traverses all users and sets the currentUser to the very first instance 
         of matching ids */}
@@ -33,7 +31,7 @@ const Profile = props => {
         on currentProfile not being an empty object & generate the corresponding JSX */}
         {currentProfile.hasOwnProperty('id') ? (
           <div className="profile">
-            <Link>Edit User</Link>
+            <Link to={`/edit/${currentProfile.id}`}>Edit User</Link>
             <img
               src={currentProfile.profile_pic}
               alt={`Profile picture of ${currentProfile.first} ${currentProfile.last}`}
