@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './styles/global.scss';
+import Profile from './components/profile';
 
 import List from './components/list';
 
@@ -9,7 +10,7 @@ const App = () => {
     <div>
       <Router>
         <Route exact path="/" component={List} />
-        {/* <Route path="/user/:id" component={Profile} /> */}
+        <Route path="/user/:id" component={Profile} />
       </Router>
     </div>
   );

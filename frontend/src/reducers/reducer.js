@@ -2,14 +2,15 @@ import {
   USERS_FETCH_START,
   USERS_FETCH_SUCCESS,
   USERS_FETCH_FAIL,
-  LENGTH_FETCH_FAIL,
-  LENGTH_FETCH_START,
-  LENGTH_FETCH_SUCCESS
+  USERS_LONG_FETCH_FAIL,
+  USERS_LONG_FETCH_START,
+  USERS_LONG_FETCH_SUCCESS
 } from '../actions/actions';
 
 const initialState = {
+  allUsers: [],
   users: [],
-  pageNumber: 0,
+  pageNumber: 1,
   totalLength: 0,
   error: '',
   isFetching: false
@@ -37,20 +38,21 @@ function reducer(state = initialState, action) {
         ...state,
         error: action.payload
       };
-    case LENGTH_FETCH_START:
+    case USERS_LONG_FETCH_START:
       return {
         ...state,
         isFetching: true,
         error: ''
       };
-    case LENGTH_FETCH_SUCCESS:
+    case USERS_LONG_FETCH_SUCCESS:
       return {
         ...state,
-        totalLength: action.totalNumber,
+        allUsers: [...action.payload],
+        totalLength: action.totalNumberUsers,
         isFetching: false,
         error: ''
       };
-    case LENGTH_FETCH_FAIL:
+    case USERS_LONG_FETCH_FAIL:
       return {
         ...state,
         error: action.payload

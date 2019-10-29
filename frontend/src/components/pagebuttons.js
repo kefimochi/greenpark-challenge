@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getPaginatedUsers, getTotalPagesNumber } from '../actions/actions';
+import { getPaginatedUsers, getAllUsers } from '../actions/actions';
 
 const PageButtons = props => {
   // Increments the page the user is on when "Next" button is clicked
@@ -20,7 +20,7 @@ const PageButtons = props => {
   // Dynamically calculates all the needed page numbers for buttons
   const getPagenumberButtons = () => {
     let arrayButtons = [];
-    for (let i = 0; i < props.totalLength / 10; i++) {
+    for (let i = 0; i < props.totalLength / 20; i++) {
       arrayButtons.push(i + 1);
     }
     return arrayButtons;
@@ -33,7 +33,7 @@ const PageButtons = props => {
         Previous
       </button>
 
-      {props.getTotalPagesNumber()}
+      {props.getAllUsers()}
       {props.totalLength && props.totalLength > 0 ? (
         getPagenumberButtons().map(el => (
           <button onClick={() => props.getPaginatedUsers((el - 1) * 20)}>
@@ -58,5 +58,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getPaginatedUsers, getTotalPagesNumber }
+  { getPaginatedUsers, getAllUsers }
 )(PageButtons);
